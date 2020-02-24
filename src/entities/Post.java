@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -41,15 +43,16 @@ public class Post {
 	@Column(name = "modified")
     private LocalDate modified;
 	
-	@Column(name = "category", length = 100)
-    private String category;
+	@ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
 	
 	public Post() {
 
 	}
 
 	public Post(String title, String shortDescription, String description, String meta, String urlSlug,
-			Boolean published, LocalDate postedOn, LocalDate modified, String category) {
+			Boolean published, LocalDate postedOn, LocalDate modified, long category_id) {
 		this.title = title;
 		this.shortDescription = shortDescription;
 		this.description = description;
@@ -58,6 +61,8 @@ public class Post {
 		this.published = published;
 		this.postedOn = postedOn;
 		this.modified = modified;
+		Category category = new Category();
+		category.setId(category_id);
 		this.category = category;
 	}
 
@@ -133,11 +138,11 @@ public class Post {
 		this.modified = modified;
 	}
 
-	public String getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 }

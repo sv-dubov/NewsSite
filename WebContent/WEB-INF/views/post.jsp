@@ -16,7 +16,7 @@
 			<h1 class="d-flex justify-content-center">Список постів</h1>
 			<a class="button" href="${pageContext.request.contextPath}/addPost">Додати пост</a>
 			<br>
-			<table class="table">
+			<table class="table" modelAttribute="posts">
 				<tr>
 					<th>Id</th>
 					<th>Title</th>

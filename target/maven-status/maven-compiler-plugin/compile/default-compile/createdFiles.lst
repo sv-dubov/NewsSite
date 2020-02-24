@@ -1,8 +1,14 @@
 controllers\HomeController.class
 entities\Post.class
+services\CustomAuthenticationProvider.class
+dto\PostDTO.class
+entities\Category.class
+dto\ListItemDTO.class
+controllers\TextEditorController.class
+dto\post\AddPostDTO.class
 dto\LoginDTO.class
 controllers\AccountController.class
 controllers\PostController.class
-dto\PostDTO.class
 services\PostService.class
-controllers\TextEditorController.class
+entities\User.class
+services\AuthService.class
