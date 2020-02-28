@@ -15,7 +15,7 @@
 	<main class="main">
 		<div class="container">
 			<h1 class="d-flex justify-content-center">Додати пост</h1>
-			<form:form name="form" action="login" method="post" modelAttribute="add">
+			<form:form name="form" action="login" method="post" modelAttribute="posts">
 				<div class="form-group">
 					<label for="title">Заголовок</label>
 					<input type="text" class="form-control" id="title">
@@ -45,7 +45,6 @@
 				<div class="form-group">
 					<label for="category">Виберіть категорію</label>
 					<select	class="form-control" id="category">
-
 						<c:forEach var="category" items="${add.categories}">
 							<option value="${category.value}">${category.text}</option>
 						</c:forEach>

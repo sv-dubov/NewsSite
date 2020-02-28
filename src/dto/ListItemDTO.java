@@ -5,7 +5,6 @@ public class ListItemDTO {
 	private String text;
 	private String value;
 	
-	
 	public ListItemDTO(String text, String value) {
 		super();
 		this.text = text;

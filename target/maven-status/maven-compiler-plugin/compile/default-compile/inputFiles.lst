@@ -1,14 +1,17 @@
+E:\Moje\Work\Works_Java_New\newsPortal\src\dto\CategoryDTO.java
 E:\Moje\Work\Works_Java_New\newsPortal\src\controllers\TextEditorController.java
 E:\Moje\Work\Works_Java_New\newsPortal\src\controllers\HomeController.java
 E:\Moje\Work\Works_Java_New\newsPortal\src\dto\ListItemDTO.java
 E:\Moje\Work\Works_Java_New\newsPortal\src\dto\LoginDTO.java
 E:\Moje\Work\Works_Java_New\newsPortal\src\services\CustomAuthenticationProvider.java
 E:\Moje\Work\Works_Java_New\newsPortal\src\dto\PostDTO.java
+E:\Moje\Work\Works_Java_New\newsPortal\src\controllers\CategoryController.java
 E:\Moje\Work\Works_Java_New\newsPortal\src\entities\Post.java
 E:\Moje\Work\Works_Java_New\newsPortal\src\controllers\AccountController.java
 E:\Moje\Work\Works_Java_New\newsPortal\src\entities\Category.java
 E:\Moje\Work\Works_Java_New\newsPortal\src\entities\User.java
 E:\Moje\Work\Works_Java_New\newsPortal\src\services\PostService.java
 E:\Moje\Work\Works_Java_New\newsPortal\src\controllers\PostController.java
+E:\Moje\Work\Works_Java_New\newsPortal\src\services\CategoryService.java
 E:\Moje\Work\Works_Java_New\newsPortal\src\dto\post\AddPostDTO.java
 E:\Moje\Work\Works_Java_New\newsPortal\src\services\AuthService.java

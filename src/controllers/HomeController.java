@@ -10,11 +10,11 @@ import services.AuthService;
 public class HomeController {
 
 	@Autowired
-	private AuthService authService; // This will auto-inject the authentication service into the controller.
+	//private AuthService authService; // This will auto-inject the authentication service into the controller.
 
 	@RequestMapping("/home")
 	public String index() {
-		this.authService.Test();
+		//this.authService.Test();
 		return "home";
 	}
 }

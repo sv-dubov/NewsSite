@@ -4,11 +4,14 @@ services\CustomAuthenticationProvider.class
 dto\PostDTO.class
 entities\Category.class
 dto\ListItemDTO.class
+services\CategoryService.class
 controllers\TextEditorController.class
 dto\post\AddPostDTO.class
 dto\LoginDTO.class
+controllers\CategoryController.class
 controllers\AccountController.class
 controllers\PostController.class
 services\PostService.class
+dto\CategoryDTO.class
 entities\User.class
 services\AuthService.class
