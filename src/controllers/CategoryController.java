@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import dto.CategoryDTO;
 import dto.PostDTO;
 import entities.Category;
+import entities.Post;
 import services.CategoryService;
 
 @Controller
@@ -52,22 +53,32 @@ public class CategoryController {
 	    }    
 	    return category;
 	}
-
-	@RequestMapping(value = "/category", method = RequestMethod.GET)
-	public ModelAndView showCategories(@ModelAttribute("cat") CategoryDTO catDTO, WebRequest request) {
-		List<Category> category = new ArrayList<Category>();
-		System.out.println(catDTO.toString());
-		category = showAllCategories();
-		return new ModelAndView("category", "cat", catDTO);
-	}
 	
-	private List<Category> showAllCategories() {
-		List<Category> category = new ArrayList<Category>();
-	    try {
-	        category = catService.GetAll();
-	    } catch (Exception e) {
-	        return null;
-	    }    
-	    return category;
+	@RequestMapping("/category")
+	public String post(Model model) {
+		List<CategoryDTO> categories = new ArrayList<CategoryDTO>();
+		List<Category> listCat = catService.GetAll();
+		for (Category c : listCat) {
+			CategoryDTO cDto = new CategoryDTO();
+			cDto.setId(c.getId());
+			cDto.setName(c.getName());
+			cDto.setUrlSlug(c.getUrlSlug());
+			cDto.setDescription(c.getDescription());
+			categories.add(cDto);
+		}
+		model.addAttribute("categories", categories);
+		return "category";
 	}
+
+	/*
+	 * @RequestMapping(value = "/category", method = RequestMethod.GET) public
+	 * ModelAndView showCategories(@ModelAttribute("cat") CategoryDTO catDTO,
+	 * WebRequest request) { List<Category> category = new ArrayList<Category>();
+	 * System.out.println(catDTO.toString()); category = showAllCategories(); return
+	 * new ModelAndView("category", "cat", catDTO); }
+	 * 
+	 * private List<Category> showAllCategories() { List<Category> category = new
+	 * ArrayList<Category>(); try { category = catService.GetAll(); } catch
+	 * (Exception e) { return null; } return category; }
+	 */
 }

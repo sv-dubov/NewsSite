@@ -8,7 +8,7 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/posttest?serverTimezone=UTC" />
+			value="jdbc:mysql://localhost:3306/newstest?serverTimezone=UTC" />
 		<property name="username" value="root" />
 		<property name="password" value="rootdsm" />
 	</bean>

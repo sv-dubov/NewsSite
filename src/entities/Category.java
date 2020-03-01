@@ -18,19 +18,19 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "category_id")
 	private long id;
-
+	
 	@Column(name = "name", length = 100, nullable = false)
-	private String name;
-
-	@Column(name = "urlSlug", length = 100, nullable = false)
-	private String urlSlug;
-
+    private String name;
+	
+	@Column(name = "urlSlug", length = 50, nullable = false)
+    private String urlSlug;
+	
 	@Column(name = "description", length = 4000)
-	private String description;
-
+    private String description;
+	
 	@OneToMany
-	@JoinColumn(name = "category_id") // we need to duplicate the physical information
-	private Set<Post> posts;
+    @JoinColumn(name = "category_id") // we need to duplicate the physical information
+    private Set<Post> posts;
 
 	public Category() {
 	}
@@ -72,12 +72,18 @@ public class Category {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+	
 	public Set<Post> getPosts() {
 		return posts;
 	}
 
 	public void setPosts(Set<Post> posts) {
 		this.posts = posts;
+	}
+
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + ", urlSlug=" + urlSlug + ", description=" + description
+				+ ", posts=" + posts + "]";
 	}
 }

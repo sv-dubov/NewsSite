@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add post</title>
+<title>Edit post</title>
 <jsp:include page="container/_link-css.jsp"></jsp:include>
 </head>
 <body>
@@ -14,8 +14,8 @@
 
 	<main class="main">
 		<div class="container">
-			<h1 class="d-flex justify-content-center">Додати пост</h1>
-			<form:form name="form" action="addPost" method="post" modelAttribute="postDTO">
+			<h1 class="d-flex justify-content-center">Редагувати пост</h1>
+			<form:form name="form" action="editPost" method="post" modelAttribute="postEdit">
 				<div class="form-group">
 					<label for="title">Заголовок</label>
 					<form:input path="title" type="text" class="form-control" id="title"/>
@@ -45,7 +45,7 @@
 				<div class="form-group">
 					<label for="category">Виберіть категорію</label>
 					<form:select path="category_id" class="form-control" id="category_id">
-						<c:forEach var="category" items="${postDTO.categories}">
+						<c:forEach var="category" items="${postEdit.categories}">
 							<option value="${category.value}">${category.text}</option>
 						</c:forEach>
 					</form:select>

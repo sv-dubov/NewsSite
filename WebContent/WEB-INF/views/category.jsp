@@ -13,7 +13,9 @@
 	<main class="main">
 		<div class="container">
 			<h1 class="d-flex justify-content-center">Список категорій</h1>
-			<table class="table table-bordered" modelAttribute="cat">
+			<a class="button" href="${pageContext.request.contextPath}/addCat">Додати категорію</a>
+			<br>
+			<table class="table table-bordered" modelAttribute="categories">
 				<tr>
 					<th>Id</th>
 					<th>Name</th>
@@ -22,14 +24,14 @@
 					<th>Edit</th>
 					<th>Delete</th>
 				</tr>
-				<c:forEach var="cat" items="${list}">
+				<c:forEach var="cat" items="${categories}">
 					<tr>
 						<td>${cat.id}</td>
 						<td>${cat.name}</td>
 						<td>${cat.urlSlug}</td>
 						<td>${cat.description}</td>
-						<td><a href="editemp/${cat.id}">Edit</a></td>
-						<td><a href="deleteemp/${cat.id}">Delete</a></td>
+						<td><a href="editCat/${cat.id}">Edit</a></td>
+						<td><a href="deleteCat/${cat.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>

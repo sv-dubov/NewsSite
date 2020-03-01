@@ -6,7 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
@@ -23,48 +26,118 @@ import dto.PostDTO;
 
 @Controller
 public class PostController {
-//	@RequestMapping("/addPost")
-//	public String index(Model model) {
-//		AddPostDTO addModel = new AddPostDTO();
-//		List<ListItemDTO> categories = new ArrayList<ListItemDTO>();
-//		categories.add(new ListItemDTO("Плодові", "1"));
-//		categories.add(new ListItemDTO("Неплодові", "2"));
-//		addModel.setCategories(categories);
-//		model.addAttribute("add", addModel);
-//		return "addPost";
-//	}
-//	
-//	@RequestMapping("/post")
-//	public String post(Model model) {
-//		PostDTO addModel = new PostDTO();
-//		model.addAttribute("posts", addModel);
-//		return "post";
-//	}
-	
+
 	@Autowired
 	private PostService postService;
+
+	@Autowired
+	private CategoryService catService;
+
 	@RequestMapping(value = "/addPost", method = RequestMethod.GET)
 	public String showAddPostForm(WebRequest request, Model model) {
 		PostDTO postDTO = new PostDTO();
-	    model.addAttribute("posts", postDTO);
-	    return "addPost";
+		System.out.println("-----------showAddPostForm------------");
+		List<ListItemDTO> categories = new ArrayList<ListItemDTO>();
+		List<Category> listCat = catService.GetAll();
+		for (Category c : listCat) {
+			String idCat = Long.toString(c.getId());
+			categories.add(new ListItemDTO(c.getName(), idCat));
+		}
+		postDTO.setCategories(categories);
+		model.addAttribute("postDTO", postDTO);
+		return "addPost";
 	}
 
 	@RequestMapping(value = "/addPost", method = RequestMethod.POST)
-	public ModelAndView addPost(@ModelAttribute("posts") PostDTO postDTO, WebRequest request) {
+	public String addPost(@ModelAttribute("postDTO")PostDTO postDTO, 
+		      BindingResult result, ModelMap model) {
+		System.out.println("---addPost ----post----");
 		Post post = new Post();
-		System.out.println(postDTO.toString());
+		System.out.println(postDTO.getUrlSlug());
+		System.out.println(postDTO.getShortDescription());
+		System.out.println(postDTO.getDescription());
+		System.out.println(postDTO.getCategory_id());
 		post = addNewPost(postDTO);
-		return new ModelAndView("addPost", "posts", postDTO);
+		List<ListItemDTO> categories = new ArrayList<ListItemDTO>();
+		List<Category> listCat = catService.GetAll();
+		for (Category c : listCat) {
+			String idCat = Long.toString(c.getId());
+			categories.add(new ListItemDTO(c.getName(), idCat));
+		}
+		postDTO.setCategories(categories);
+		model.addAttribute("postDTO", postDTO);
+		return "addPost";
 	}
-	
+
 	private Post addNewPost(PostDTO postDTO) {
 		Post post = null;
-	    try {
-	        post = postService.Add(postDTO);
-	    } catch (Exception e) {
-	        return null;
-	    }    
-	    return post;
+		try {
+			post = postService.Add(postDTO);
+		} catch (Exception e) {
+			return null;
+		}
+		return post;
+	}
+	
+	@RequestMapping(value = "/editPost/{id}", method = RequestMethod.GET)
+	public String showEditPostForm(@PathVariable("id") String id, WebRequest request, Model model) {
+		PostDTO postDTO = new PostDTO();
+		System.out.println("edit method; id=" + id);
+		Post post = postService.GetById(Long.parseLong(id));
+		postDTO.setId(post.getId());
+		postDTO.setTitle(post.getTitle());
+		postDTO.setShortDescription(post.getShortDescription());
+		postDTO.setDescription(post.getDescription());
+		postDTO.setMeta(post.getMeta());
+		postDTO.setUrlSlug(post.getUrlSlug());
+		postDTO.setPostedOn(post.getPostedOn());
+		postDTO.setPublished(post.getPublished());
+		Long catId = post.getCategory().getId();
+		postDTO.setCategory_id(catId.toString());
+		List<ListItemDTO> categories = new ArrayList<ListItemDTO>();
+		List<Category> listCat = catService.GetAll();
+		for (Category c : listCat) {
+			String idCat = Long.toString(c.getId());
+			categories.add(new ListItemDTO(c.getName(), idCat));
+		}
+		postDTO.setCategories(categories);
+		model.addAttribute("postEdit", postDTO);
+		return "editPost";
+	}
+
+	@RequestMapping(value = "/editPost", method = RequestMethod.POST)
+	public String editPost(@ModelAttribute("postDTO")PostDTO postDTO, 
+		      BindingResult result, ModelMap model) {
+		System.out.println("---editPost ----post----");
+		Post post = new Post();
+		System.out.println(postDTO.getUrlSlug());
+		System.out.println(postDTO.getShortDescription());
+		System.out.println(postDTO.getDescription());
+		System.out.println(postDTO.getCategory_id());
+		//post = editPost(postDTO);
+		List<ListItemDTO> categories = new ArrayList<ListItemDTO>();
+		List<Category> listCat = catService.GetAll();
+		for (Category c : listCat) {
+			String idCat = Long.toString(c.getId());
+			categories.add(new ListItemDTO(c.getName(), idCat));
+		}
+		postDTO.setCategories(categories);
+		model.addAttribute("postDTO", postDTO);
+		return "editPost";
+	}
+	
+	@RequestMapping("/post")
+	public String post(Model model) {
+		List<PostDTO> posts = new ArrayList<PostDTO>();
+		List<Post> listPosts = postService.GetAll();
+		for (Post p : listPosts) {
+			PostDTO pDto = new PostDTO();
+			pDto.setId(p.getId());
+			pDto.setTitle(p.getTitle());
+			pDto.setShortDescription(p.getShortDescription());
+			posts.add(pDto);
+		}
+		model.addAttribute("posts", posts);
+		return "post";
 	}
 }
