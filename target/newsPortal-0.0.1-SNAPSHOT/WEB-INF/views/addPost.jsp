@@ -15,7 +15,7 @@
 	<main class="main">
 		<div class="container">
 			<h1 class="d-flex justify-content-center">Додати пост</h1>
-			<form:form name="form" action="addPost" method="post" modelAttribute="postDTO">
+			<form:form name="form" action="${pageContext.request.contextPath}/addPost" method="post" modelAttribute="postDTO">
 				<div class="form-group">
 					<label for="title">Заголовок</label>
 					<form:input path="title" type="text" class="form-control" id="title"/>

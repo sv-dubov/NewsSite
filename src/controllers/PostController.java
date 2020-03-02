@@ -118,6 +118,42 @@ public class PostController {
 		return "post";
 	}
 	
+	@RequestMapping(value = "/delPost/{id}", method = RequestMethod.GET)
+	public String showDeleteProductForm(@PathVariable("id") String id, WebRequest request, Model model) {
+		PostDTO postDTO = new PostDTO();
+		System.out.println("delete method; id=" + id);
+		Post post = postService.GetById(Long.parseLong(id));
+		postDTO.setId(post.getId());
+		postDTO.setTitle(post.getTitle());
+		postDTO.setShortDescription(post.getShortDescription());
+		postDTO.setDescription(post.getDescription());
+		postDTO.setMeta(post.getMeta());
+		postDTO.setUrlSlug(post.getUrlSlug());
+		postDTO.setPostedOn(post.getPostedOn());
+		postDTO.setPublished(post.getPublished());
+		Long catId = post.getCategory().getId();
+		postDTO.setCategory_id(catId.toString());
+		List<ListItemDTO> categories = new ArrayList<ListItemDTO>();
+		List<Category> listCat = catService.GetAll();
+		for (Category c : listCat) {
+			String idCat = Long.toString(c.getId());
+			categories.add(new ListItemDTO(c.getName(), idCat));
+		}
+		postDTO.setCategories(categories);
+		model.addAttribute("postDel", postDTO);
+		return "delPost";
+	}
+
+	@RequestMapping(value = "/delPost/{id}", method = RequestMethod.POST)
+	public String deleteProduct(@PathVariable("id") String id, @ModelAttribute("postDTO") PostDTO postDTO,
+			BindingResult result, ModelMap model) {
+		System.out.println("id" + id);
+		long deleteId = Long.parseLong(id);
+		postService.Delete(deleteId);
+		model.addAttribute("posts", postService.GetAll());
+		return "post";
+	}
+	
 	@RequestMapping("/post")
 	public String post(Model model) {
 		List<PostDTO> posts = new ArrayList<PostDTO>();
