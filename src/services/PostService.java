@@ -24,7 +24,9 @@ public class PostService {
 		post.setDescription(postDTO.getDescription());
 		post.setMeta(postDTO.getMeta());
 		post.setUrlSlug(postDTO.getUrlSlug());
-		//post.setPostedOn(postDTO.getPostedOn());
+		post.setPostedOn(postDTO.getPostedOn());
+		post.setModified(postDTO.getModified());
+		post.setPublished(postDTO.getPublished());
 		long id = Long.parseLong(postDTO.getCategory_id());
 		Category cat = new Category();
 		cat.setId(id);
@@ -57,6 +59,8 @@ public class PostService {
 		post.setMeta(postDTO.getMeta());
 		post.setUrlSlug(postDTO.getUrlSlug());
 		post.setPostedOn(postDTO.getPostedOn());
+		post.setModified(postDTO.getModified());
+		post.setPublished(postDTO.getPublished());
 		long id = Long.parseLong(postDTO.getCategory_id());
 		Category cat = new Category();
 		cat.setId(id);

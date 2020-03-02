@@ -15,7 +15,7 @@
 	<main class="main">
 		<div class="container">
 			<h1 class="d-flex justify-content-center">Редагувати пост</h1>
-			<form:form name="form" action="editPost" method="post" modelAttribute="postEdit">
+			<form:form name="form" action="${pageContext.request.contextPath}/editPost/${postEdit.id}" method="post" modelAttribute="postEdit">
 				<div class="form-group">
 					<label for="title">Заголовок</label>
 					<form:input path="title" type="text" class="form-control" id="title"/>
@@ -56,7 +56,7 @@
 					<label class="form-check-label" for="published">Показати на сайті</label>
 				</div>
 				<br>
-				<button type="submit" class="btn btn-primary">Додати</button>
+				<button type="submit" class="btn btn-primary">Зберегти</button>
 			</form:form>
 		</div>
 	</main>

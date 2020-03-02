@@ -23,6 +23,7 @@
 					<th>ShortDescription</th>
 					<th>Meta</th>
 					<th>URL slug</th>
+					<th>Posted on</th>
 					<th>Published</th>
 					<th>Edit</th>
 					<th>Delete</th>
@@ -34,6 +35,7 @@
 						<td>${post.shortDescription}</td>
 						<td>${post.meta}</td>
 						<td>${post.urlSlug}</td>
+						<td>${post.postedOn}</td>
 						<td>${post.published}</td>
 						<td><a href="editPost/${post.id}">Edit</a></td>
 						<td><a href="deletepost/${post.id}">Delete</a></td>
