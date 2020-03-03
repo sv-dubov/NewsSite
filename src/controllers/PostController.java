@@ -36,7 +36,6 @@ public class PostController {
 	@RequestMapping(value = "/addPost", method = RequestMethod.GET)
 	public String showAddPostForm(WebRequest request, Model model) {
 		PostDTO postDTO = new PostDTO();
-		System.out.println("-----------showAddPostForm------------");
 		List<ListItemDTO> categories = new ArrayList<ListItemDTO>();
 		List<Category> listCat = catService.GetAll();
 		for (Category c : listCat) {
@@ -60,7 +59,6 @@ public class PostController {
 			categories.add(new ListItemDTO(c.getName(), idCat));
 		}
 		postDTO.setCategories(categories);
-		//model.addAttribute("postDTO", postDTO);
 		model.addAttribute("posts", postService.GetAll());
 		return "post";
 	}

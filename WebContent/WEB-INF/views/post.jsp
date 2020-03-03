@@ -16,17 +16,17 @@
 			<h1 class="d-flex justify-content-center">Список постів</h1>
 			<a class="button" href="${pageContext.request.contextPath}/addPost">Додати пост</a>
 			<br>
-			<table class="table" modelAttribute="posts">
+			<table class="table table-bordered" modelAttribute="posts">
 				<tr>
 					<th>Id</th>
-					<th>Title</th>
-					<th>ShortDescription</th>
+					<th>Заголовок</th>
+					<th>Короткий опис</th>
 					<th>Meta</th>
 					<th>URL slug</th>
-					<th>Posted on</th>
-					<th>Published</th>
-					<th>Edit</th>
-					<th>Delete</th>
+					<th>Дата публікації</th>
+					<th>Опубліковано</th>
+					<th>Редагувати</th>
+					<th>Видалити</th>
 				</tr>
 				<c:forEach var="post" items="${posts}">
 					<tr>
@@ -37,8 +37,8 @@
 						<td>${post.urlSlug}</td>
 						<td>${post.postedOn}</td>
 						<td>${post.published}</td>
-						<td><a href="editPost/${post.id}">Edit</a></td>
-						<td><a href="delPost/${post.id}">Delete</a></td>
+						<td><a href="editPost/${post.id}">Редагувати</a></td>
+						<td><a href="delPost/${post.id}">Видалити</a></td>
 					</tr>
 				</c:forEach>
 			</table>

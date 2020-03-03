@@ -14,7 +14,7 @@
 	<main class="main">
 		<div class="container">
 			<h1 class="d-flex justify-content-center">Додати категорію</h1>
-			<form:form name="form" method="POST" modelAttribute="cat">
+			<form:form name="form" method="post" modelAttribute="cat">
 				<div class="form-group">
 					<form:label path="name">Назва</form:label>
 					<form:input type="text" class="form-control" path="name" />
@@ -35,26 +35,6 @@
 			</form:form>
 		</div>
 	</main>
-	<%-- 	<jsp:include page="container/_header.jsp"></jsp:include>
-	<h1>Add category form</h1>
-	<form:form method="POST" modelAttribute="cat">
-		<div class="form-group">
-			<form:label path="name">Name</form:label>
-			<form:input type="text" class="form-control" path="name" />
-		</div>
-
-		<div>
-			<form:label path="urlSlug">url Slug</form:label>
-			<form:input path="urlSlug" />
-		</div>
-
-		<div>
-			<form:label path="description">Description</form:label>
-			<form:input path="description" />
-		</div>
-
-		<input type="submit" value="Submit" />
-	</form:form> --%>
 	<jsp:include page="container/_scripts.jsp"></jsp:include>
 </body>
 </html>

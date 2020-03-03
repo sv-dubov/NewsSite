@@ -7,6 +7,18 @@ public class CategoryDTO {
     private String urlSlug;
     private String description;
 
+	public CategoryDTO() {
+		super();
+	}
+
+	public CategoryDTO(long id, String name, String urlSlug, String description) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.urlSlug = urlSlug;
+		this.description = description;
+	}
+
 	public long getId() {
 		return id;
 	}
