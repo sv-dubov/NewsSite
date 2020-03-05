@@ -15,21 +15,17 @@
 	<main class="main">
 		<div class="container">
 			<h1 class="d-flex justify-content-center">Видалити пост</h1>
-			<form:form name="form" action="${pageContext.request.contextPath}/delPost/${postDel.id}"
+			<form:form name="form"
+				action="${pageContext.request.contextPath}/delPost/${postDel.id}"
 				method="post" modelAttribute="postDel">
-				<div class="card" style="width: 18rem;">
+				<div class="card">
+					<div class="card-header">Видалення поста</div>
 					<div class="card-body">
+						<h5 class="card-title">Ви дійсно хочете видалити цей пост?</h5>
 						<p class="card-text" name="title">${postDel.title}</p>
-						<p class="card-text" name="shortDescription">${postDel.shortDescription}</p>
-						<p class="card-text" name="description">${postDel.description}</p>
-						<p class="card-text" name="meta">${postDel.meta}</p>
-						<p class="card-text" name="urlSlug">${postDel.urlSlug}</p>
-						<p class="card-text" name="published">${postDel.published}</p>
-						<p class="card-text" name="postedOn">${postDel.postedOn}</p>
-						<p class="card-text" name="categories">${postDel.categories}</p>
+						<button type="submit" class="btn btn-danger">Видалити</button>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-danger">Видалити</button>
 			</form:form>
 		</div>
 	</main>

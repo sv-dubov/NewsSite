@@ -19,7 +19,7 @@ public class Post {
 	@Column(name = "id")
 	private long id;
 	
-	@Column(name = "title", length = 500, nullable = false)
+	@Column(name = "title", nullable = false)
     private String title;
 	
 	@Column(name = "shortDescription", nullable = false)

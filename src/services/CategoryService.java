@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 
 import dto.CategoryDTO;
 import entities.Category;
-import entities.Post;
 
 public class CategoryService {
 	

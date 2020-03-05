@@ -14,7 +14,7 @@
 	<main class="main">
 		<div class="container">
 			<h1 class="d-flex justify-content-center">Редагувати категорію</h1>
-			<form:form name="form" action="${pageContext.request.contextPath}/editPost/${catEdit.id}" method="post" modelAttribute="catEdit">
+			<form:form name="form" action="${pageContext.request.contextPath}/editCat/${catEdit.id}" method="post" modelAttribute="catEdit">
 				<div class="form-group">
 					<form:label path="name">Назва</form:label>
 					<form:input type="text" class="form-control" path="name" id="name" />

@@ -1,6 +1,7 @@
 controllers\HomeController.class
 entities\Post.class
 services\CustomAuthenticationProvider.class
+services\HomeService.class
 dto\PostDTO.class
 entities\Category.class
 dto\ListItemDTO.class

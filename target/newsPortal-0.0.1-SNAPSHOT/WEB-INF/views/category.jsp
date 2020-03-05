@@ -18,11 +18,11 @@
 			<table class="table table-bordered" modelAttribute="categories">
 				<tr>
 					<th>Id</th>
-					<th>Name</th>
-					<th>urlSlug</th>
-					<th>Description</th>
-					<th>Edit</th>
-					<th>Delete</th>
+					<th>Назва</th>
+					<th>URL slug</th>
+					<th>Опис</th>
+					<th>Редагувати</th>
+					<th>Видалити</th>
 				</tr>
 				<c:forEach var="cat" items="${categories}">
 					<tr>
@@ -30,8 +30,8 @@
 						<td>${cat.name}</td>
 						<td>${cat.urlSlug}</td>
 						<td>${cat.description}</td>
-						<td><a href="editCat/${cat.id}">Edit</a></td>
-						<td><a href="deleteCat/${cat.id}">Delete</a></td>
+						<td><a href="editCat/${cat.id}">Редагувати</a></td>
+						<td><a href="delCat/${cat.id}">Видалити</a></td>
 					</tr>
 				</c:forEach>
 			</table>

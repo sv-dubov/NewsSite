@@ -57,6 +57,11 @@
 		<constructor-arg name="sessionFactory"
 			ref="sessionFactoryBean" />
 	</bean>
+	
+	<bean id="homeServiceBean" class="services.HomeService">
+		<constructor-arg name="sessionFactory"
+			ref="sessionFactoryBean" />
+	</bean>
 
 
 	<!-- <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"> 

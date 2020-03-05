@@ -27,6 +27,10 @@ import entities.Category;
 import entities.Post;
 import services.CategoryService;
 
+/**
+ * @author SlimBoyFat
+ *
+ */
 @Controller
 public class CategoryController {
 	
@@ -118,5 +122,4 @@ public class CategoryController {
 		model.addAttribute("categories", categories);
 		return "category";
 	}
-
 }
