@@ -8,7 +8,7 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/newstest?serverTimezone=UTC" />
+			value="jdbc:mysql://localhost:3306/newssite?serverTimezone=UTC" />
 		<property name="username" value="root" />
 		<property name="password" value="rootdsm" />
 	</bean>
@@ -23,6 +23,8 @@
 			<list>
 				<value>entities.Category</value>
 				<value>entities.Post</value>
+				<value>entities.User</value>
+				<value>entities.Role</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -34,18 +36,17 @@
 		</property>
 	</bean>
 
-	<!-- <bean id="hibernateTemplateBean" class="org.springframework.orm.hibernate5.HibernateTemplate"> 
-		<property name="sessionFactory" ref="sessionFactoryBean" /> </bean> -->
-
-
 	<bean id="authenticateServiceBean" class="services.AuthService">
-		<constructor-arg name="sessionFactory"
-			ref="sessionFactoryBean" />
+		<property name="sessionFactory" ref="sessionFactoryBean" />
 	</bean>
 
 	<bean id="authenticationProviderBean"
 		class="services.CustomAuthenticationProvider">
 		<constructor-arg index="0" ref="sessionFactoryBean" />
+	</bean>
+
+	<bean id="registrationServiceBean" class="services.RegistrationService">
+		<property name="sessionFactory" ref="sessionFactoryBean" />
 	</bean>
 	
 	<bean id="categoryServiceBean" class="services.CategoryService">
@@ -63,8 +64,9 @@
 			ref="sessionFactoryBean" />
 	</bean>
 
-
-	<!-- <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"> 
-		<constructor-arg value="11" /> </bean> -->
+	<bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<constructor-arg value="11" />
+	</bean>
 
 </beans>

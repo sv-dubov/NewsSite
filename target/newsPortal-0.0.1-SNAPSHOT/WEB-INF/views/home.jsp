@@ -36,9 +36,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-md-10 mx-auto" modelAttribute="home">
-					<c:forEach var="post" items="${posts}">
+					<c:forEach var="post" items="${home}">
 						<div class="post-preview">
-							<a href="post.jsp">
+							<a href="home.jsp">
 								<h2 class="post-title">${post.title}</h2>
 								<h3 class="post-subtitle">${post.shortDescription}</h3>
 							</a>
